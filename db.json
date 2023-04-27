@@ -1,0 +1,14 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Ralf Wrecknick",
+      "phoneNumber": "082154590559"
+    },
+    {
+      "id": 2,
+      "name": "Stella Anastasia",
+      "phoneNumber": "089640001855"
+    }
+  ]
+}
