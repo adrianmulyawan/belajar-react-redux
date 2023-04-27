@@ -18,7 +18,7 @@ const NavbarComponent = () => {
                 <a className="nav-link" href="/" style={{ fontSize: '20px' }}>About</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/" style={{ fontSize: '20px' }}>Contact</a>
+                <a className="nav-link" href="/contact" style={{ fontSize: '20px' }}>Contact</a>
               </li>
             </ul>
           </div>
