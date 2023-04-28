@@ -1,6 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { getListContacts } from '../../actions/contact.action';
+import { useDispatch, useSelector } from 'react-redux';
 
 const TableContactComponent = () => {
+  // > Ngambil state dari reducer
+  // => state.contactReducer didapat dari file ./src/reducers/contact/contact.reducer.js
+  const { 
+    getListContactResult,
+    getListContactLoading,
+    getListContactError,
+  } = useSelector((state) => state.contactReducer);
+
+  // > useDispatch
+  const dispatch = useDispatch();
+
+  let i = 0;
+  useEffect(() => {
+    if (i === 0) {
+      console.info('1. useEffect Berjalan');
+      // > Get List Contact
+      dispatch(getListContacts());
+      i++;
+    }
+  }, [dispatch, i]);
+
   return (
     <>
       <table className="table table-responsive table-bordered">
@@ -13,16 +36,51 @@ const TableContactComponent = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row" className='text-center'>1</th>
-            <td className='text-center'>Mark</td>
-            <td className='text-center'>Otto</td>
-            <td className='text-center'>
-              <span class="badge rounded-pill bg-primary">Detail</span>
-              <span class="badge rounded-pill bg-success mx-2">Edit</span>
-              <span class="badge rounded-pill bg-danger">Delete</span>
-            </td>
-          </tr>
+          {/* Pending */}
+          {
+            getListContactLoading && (
+              <tr>
+                <td className='text-center' colSpan={ 4 }>
+                  <i>Data Loading...</i>
+                </td>
+              </tr>
+            )
+          }
+          {/* Resolve */}
+          {
+            getListContactResult && (
+              getListContactResult.map((contact, index) => {
+                return (
+                  <tr key={ contact.id }>
+                    <th scope="row" className='text-center'>
+                      { index += 1 }
+                    </th>
+                    <td className='text-center'>
+                      { contact.name }
+                    </td>
+                    <td className='text-center'>
+                      { contact.phoneNumber }
+                    </td>
+                    <td className='text-center'>
+                      <span className="badge rounded-pill bg-primary">Detail</span>
+                      <span className="badge rounded-pill bg-success mx-2">Edit</span>
+                      <span className="badge rounded-pill bg-danger">Delete</span>
+                    </td>
+                  </tr>
+                )
+              })
+            )
+          }
+          {/* Failed */}
+          {
+            getListContactError && (
+              <tr>
+                <td className='text-center' colSpan={ 4 }>
+                  <i>{ getListContactError ? getListContactError : 'Contact is Empty...' }</i>
+                </td>
+              </tr>
+            )
+          }
         </tbody>
       </table>
     </>
