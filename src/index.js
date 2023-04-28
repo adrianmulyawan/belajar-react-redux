@@ -7,23 +7,10 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap';
 
-// > React Redux
-import { createStore, compose, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-
-// > Import Reducers
-import reducers from './reducers';
-
-// > buat store reducers
-const store = createStore(reducers, compose(applyMiddleware(thunk)));
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={ store }>
-      <App />
-    </Provider>
+    <App />
   </React.StrictMode>
 );
 
