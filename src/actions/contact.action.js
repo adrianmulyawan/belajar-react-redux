@@ -2,6 +2,7 @@ import axios from 'axios';
 
 // > Constant (Untuk di Oper ke Reducer)
 export const GET_LIST_CONTACT = "GET_LIST_CONTACTS";
+export const ADD_NEW_CONTACT = "ADD_NEW_CONTACT";
 
 // > Method Handle Seluruh Data Kontak (Get All Data Contacts)
 export const getListContacts = () => {
@@ -48,4 +49,47 @@ export const getListContacts = () => {
       });
     }
   }
-}
+};
+
+// > Method Tambah Kontak Baru
+export const addNewContact = (data) => {
+  return async (dispatch) => {
+    // > dispatch untuk handle data dirender (loading)
+    dispatch({
+      type: ADD_NEW_CONTACT,
+      payload: {
+        loading: true,
+        data: false,
+        errorMessage: false,
+      },
+    });
+
+    // > Jika data berhasil ditambahkan
+    try {
+      const response = await axios.post('http://localhost:3004/contacts', data);
+      console.info(response.data, '3. Berhasil Tambah Data');
+      
+      dispatch({
+        type: ADD_NEW_CONTACT,
+        payload: {
+          loading: false,
+          data: response.data,
+          errorMessage: false
+        },
+      });
+    } 
+    // > Jika data gagal ditambahkan
+    catch (error) {
+      console.info(error.message, '3. Data tidak didapatkan');
+
+      dispatch({
+        type: ADD_NEW_CONTACT,
+        payload: {
+          loading: false,
+          data: false,
+          errorMessage: error.message,
+        },
+      });
+    }
+  };
+};
