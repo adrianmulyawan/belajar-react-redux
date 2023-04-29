@@ -171,7 +171,7 @@ export const editContact = (data) => {
 
     // 2. data berhasil update
     try {
-      const response = await axios.put(`http://localhost:3004/contacts/${data.id}`);
+      const response = await axios.put(`http://localhost:3004/contacts/${data.id}`, data);
       console.info(response.data, '3. Sukses update data');
 
       dispatch({
