@@ -3,7 +3,8 @@ import {
   GET_LIST_CONTACT, 
   ADD_NEW_CONTACT, 
   DELETE_CONTACT,
-  DETAIL_CONTACT
+  DETAIL_CONTACT,
+  UPDATE_CONTACT
 } from "../../actions/contact.action";
 
 const initialState = {
@@ -21,6 +22,10 @@ const initialState = {
   deleteContactError: false,
   // > DETAIL CONTACT
   detailContactResult: false,
+  // > UPDATE CONTACT
+  updateContactResult: false,
+  updateContactLoading: false,
+  updateContactError: false,
 };
 
 const contactReducer = (state = initialState, action) => {
@@ -57,10 +62,19 @@ const contactReducer = (state = initialState, action) => {
       };
     case DETAIL_CONTACT:
       console.info(action.payload, '4. Masuk ke Reducer Detail kontak!');
-      
+
       return {
         ...state,
         detailContactResult: action.payload.data,
+      };
+    case UPDATE_CONTACT:
+      console.info(action.payload, '4. Masuk ke Reducer Update Contact!');
+
+      return {
+        ...state,
+        updateContactResult: action.payload.loading,
+        updateContactLoading: action.payload.data,
+        updateContactError: action.payload.errorMessage,
       };
     default:
       return state;
