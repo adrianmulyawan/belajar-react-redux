@@ -4,6 +4,7 @@ import axios from 'axios';
 export const GET_LIST_CONTACT = "GET_LIST_CONTACTS";
 export const ADD_NEW_CONTACT = "ADD_NEW_CONTACT";
 export const DELETE_CONTACT = "DELETE_CONTACT";
+export const DETAIL_CONTACT = "DETAIL_CONTACT";
 
 // > Method Handle Seluruh Data Kontak (Get All Data Contacts)
 export const getListContacts = () => {
@@ -136,5 +137,17 @@ export const deleteContact = (id) => {
         },
       });
     }
+  };
+};
+
+// > Method Detail Kontak
+export const detailContact = (data) => {
+  return async (dispatch) => {
+    dispatch({
+      type: DETAIL_CONTACT,
+      payload: {
+        data: data.data,
+      },
+    });
   };
 };
