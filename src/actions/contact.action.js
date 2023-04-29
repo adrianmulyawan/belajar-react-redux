@@ -5,7 +5,7 @@ export const GET_LIST_CONTACT = "GET_LIST_CONTACTS";
 export const ADD_NEW_CONTACT = "ADD_NEW_CONTACT";
 export const DELETE_CONTACT = "DELETE_CONTACT";
 export const DETAIL_CONTACT = "DETAIL_CONTACT";
-// export const EDIT_CONTACT = "EDIT_CONTACT";
+export const UPDATE_CONTACT = "UPDATE_CONTACT";
 
 // > Method Handle Seluruh Data Kontak (Get All Data Contacts)
 export const getListContacts = () => {
@@ -152,5 +152,47 @@ export const detailContact = (data) => {
         data: data,
       },
     });
+  };
+};
+
+export const editContact = (data) => {
+  console.info('2. Masuk kedalam action edit contact');
+
+  return async (dispatch) => {
+    // 1. data loading
+    dispatch({
+      type: UPDATE_CONTACT,
+      payload: {
+        loading: false,
+        data: false,
+        errorMessage: false,
+      },
+    });
+
+    // 2. data berhasil update
+    try {
+      const response = await axios.put(`http://localhost:3004/contacts/${data.id}`);
+      console.info(response.data, '3. Sukses update data');
+
+      dispatch({
+        type: UPDATE_CONTACT,
+        payload: {
+          loading: false,
+          data: response.data,
+          errorMessage: false,
+        },
+      });
+    } catch (error) {
+      console.info(error.message, '3. Gagal update contact');
+
+      dispatch({
+        type: UPDATE_CONTACT,
+        payload: {
+          loading: false,
+          data: false,
+          errorMessage: error.message,
+        },
+      });
+    }
   };
 };
