@@ -1,11 +1,6 @@
 {
   "contacts": [
     {
-      "id": 1,
-      "name": "Ralf Wrecknick",
-      "phoneNumber": "082154590559"
-    },
-    {
       "id": 2,
       "name": "Stella Anastasia",
       "phoneNumber": "089640001855"
@@ -14,16 +9,6 @@
       "id": 1682674479460,
       "name": "Mandalika Ayusti Nawangsari",
       "phoneNumber": "082225459581"
-    },
-    {
-      "id": 1682677067703,
-      "name": "Raudy Alfansuri",
-      "phoneNumber": "081258161143"
-    },
-    {
-      "id": 1682677105868,
-      "name": "Amanda Putri",
-      "phoneNumber": "081345983677"
     },
     {
       "id": 1682677298226,
@@ -36,19 +21,9 @@
       "phoneNumber": "081258161143"
     },
     {
-      "id": 1682677371296,
-      "name": "Widya Eka",
-      "phoneNumber": "081345983677"
-    },
-    {
       "id": 1682677443822,
       "name": "Willy the Kid",
       "phoneNumber": "089694391655"
-    },
-    {
-      "id": 1682677485797,
-      "name": "Rania",
-      "phoneNumber": "081258161143"
     },
     {
       "id": 1682677576943,
@@ -64,16 +39,6 @@
       "id": 1682677708426,
       "name": "Miftah Alfizah",
       "phoneNumber": "081345983677"
-    },
-    {
-      "id": 1682677955985,
-      "name": "Hakaman",
-      "phoneNumber": "089640001855"
-    },
-    {
-      "id": 1682678053422,
-      "name": "Tria Nabila",
-      "phoneNumber": "089694391655"
     }
   ]
 }
