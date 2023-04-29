@@ -72,8 +72,8 @@ const contactReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        updateContactResult: action.payload.loading,
-        updateContactLoading: action.payload.data,
+        updateContactResult: action.payload.data,
+        updateContactLoading: action.payload.loading,
         updateContactError: action.payload.errorMessage,
       };
     default:
