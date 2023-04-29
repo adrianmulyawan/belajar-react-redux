@@ -5,6 +5,7 @@ export const GET_LIST_CONTACT = "GET_LIST_CONTACTS";
 export const ADD_NEW_CONTACT = "ADD_NEW_CONTACT";
 export const DELETE_CONTACT = "DELETE_CONTACT";
 export const DETAIL_CONTACT = "DETAIL_CONTACT";
+// export const EDIT_CONTACT = "EDIT_CONTACT";
 
 // > Method Handle Seluruh Data Kontak (Get All Data Contacts)
 export const getListContacts = () => {
@@ -142,6 +143,7 @@ export const deleteContact = (id) => {
 
 // > Method Detail Kontak
 export const detailContact = (data) => {
+  console.info('2. Masuk kedalam action detail contact');
   console.info(data, '3. Data detail contact (dari action)');
   return (dispatch) => {
     dispatch({
