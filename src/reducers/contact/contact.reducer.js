@@ -2,7 +2,8 @@
 import { 
   GET_LIST_CONTACT, 
   ADD_NEW_CONTACT, 
-  DELETE_CONTACT 
+  DELETE_CONTACT,
+  DETAIL_CONTACT
 } from "../../actions/contact.action";
 
 const initialState = {
@@ -18,6 +19,8 @@ const initialState = {
   deleteContactResult: false,
   deleteContactLoading: false,
   deleteContactError: false,
+  // > DETAIL CONTACT
+  detailContactResult: false,
 };
 
 const contactReducer = (state = initialState, action) => {
@@ -51,6 +54,13 @@ const contactReducer = (state = initialState, action) => {
         deleteContactResult: action.payload.data,
         deleteContactLoading: action.payload.loading,
         deleteContactError: action.payload.errorMessage
+      };
+    case DETAIL_CONTACT:
+      console.info(action.payload, '4. Masuk ke Reducer Detail kontak!');
+      
+      return {
+        ...state,
+        detailContactResult: action.payload.data,
       };
     default:
       return state;
