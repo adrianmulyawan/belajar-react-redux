@@ -62,9 +62,9 @@ const TableContactComponent = () => {
                       { contact.phoneNumber }
                     </td>
                     <td className='text-center'>
-                      <span className="badge rounded-pill bg-primary">Detail</span>
-                      <span className="badge rounded-pill bg-success mx-2">Edit</span>
-                      <span className="badge rounded-pill bg-danger">Delete</span>
+                      <a href='/' className="badge rounded-pill bg-primary">Detail</a>
+                      <a href='/' className="badge rounded-pill bg-success mx-2">Edit</a>
+                      <a href='/' className="badge rounded-pill bg-danger">Delete</a>
                     </td>
                   </tr>
                 )
