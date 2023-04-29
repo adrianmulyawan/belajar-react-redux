@@ -2,7 +2,7 @@
   "contacts": [
     {
       "id": 2,
-      "name": "Stella Anastasia",
+      "name": "Anastasia Putri",
       "phoneNumber": "089640001855"
     },
     {
@@ -11,34 +11,34 @@
       "phoneNumber": "082225459581"
     },
     {
-      "id": 1682677298226,
-      "name": "Windah Basudara",
-      "phoneNumber": "089694391655"
-    },
-    {
-      "id": 1682677334097,
-      "name": "Adrian Mulyawan",
-      "phoneNumber": "081258161143"
-    },
-    {
-      "id": 1682677443822,
-      "name": "Willy the Kid",
-      "phoneNumber": "089694391655"
-    },
-    {
       "id": 1682677576943,
       "name": "Iris Wullur",
       "phoneNumber": "089694391655"
     },
     {
-      "id": 1682677669664,
-      "name": "Geraldi Satria",
+      "id": 1682677708426,
+      "name": "Alvin Miftah Fauzi",
+      "phoneNumber": "081345983677"
+    },
+    {
+      "id": 1682782047525,
+      "name": "fulan",
       "phoneNumber": "089694391655"
     },
     {
-      "id": 1682677708426,
-      "name": "Miftah Alfizah",
-      "phoneNumber": "081345983677"
+      "id": 1682782055312,
+      "name": "Stella Anastasia M",
+      "phoneNumber": "089640001855"
+    },
+    {
+      "id": 1682782112734,
+      "name": "Melisakun",
+      "phoneNumber": "089694391655"
+    },
+    {
+      "id": 1682782125114,
+      "name": "Windah Barusadar",
+      "phoneNumber": "089694391655"
     }
   ]
 }
