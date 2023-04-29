@@ -142,11 +142,12 @@ export const deleteContact = (id) => {
 
 // > Method Detail Kontak
 export const detailContact = (data) => {
-  return async (dispatch) => {
+  console.info(data, '3. Data detail contact (dari action)');
+  return (dispatch) => {
     dispatch({
       type: DETAIL_CONTACT,
       payload: {
-        data: data.data,
+        data: data,
       },
     });
   };
