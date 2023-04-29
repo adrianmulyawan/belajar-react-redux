@@ -3,6 +3,7 @@ import axios from 'axios';
 // > Constant (Untuk di Oper ke Reducer)
 export const GET_LIST_CONTACT = "GET_LIST_CONTACTS";
 export const ADD_NEW_CONTACT = "ADD_NEW_CONTACT";
+export const DELETE_CONTACT = "DELETE_CONTACT";
 
 // > Method Handle Seluruh Data Kontak (Get All Data Contacts)
 export const getListContacts = () => {
@@ -84,6 +85,50 @@ export const addNewContact = (data) => {
 
       dispatch({
         type: ADD_NEW_CONTACT,
+        payload: {
+          loading: false,
+          data: false,
+          errorMessage: error.message,
+        },
+      });
+    }
+  };
+};
+
+export const deleteContact = (id) => {
+  console.info('2. Masuk Kedalam Method Delete Contact!');
+
+  return async (dispatch) => {
+    // > Kondisi ketika loading
+    dispatch({
+      type: DELETE_CONTACT,
+      payload: {
+        loading: true,
+        data: false,
+        errorMessage: false,
+      },
+    });
+
+    // > Kondisi Berhasil Hapus Data
+    try {
+      const response = await axios.delete(`http://localhost:3004/contacts/${id}`);
+      console.info(response.data, '3. Data berhasil dihapus!');
+
+      dispatch({
+        type: DELETE_CONTACT,
+        payload: {
+          loading: false,
+          data: response.data,
+          errorMessage: false,
+        },
+      });
+    } 
+    // > Kondisi Gagal Hapus Data
+    catch (error) {
+      console.info(error.message, '3. Gagal Hapus Data');
+
+      dispatch({
+        type: DELETE_CONTACT,
         payload: {
           loading: false,
           data: false,
