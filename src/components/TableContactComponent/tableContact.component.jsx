@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react';
-import { getListContacts, deleteContact } from '../../actions/contact.action';
+import { 
+  getListContacts, 
+  deleteContact, 
+  detailContact 
+} from '../../actions/contact.action';
 import { useDispatch, useSelector } from 'react-redux';
 
 const TableContactComponent = () => {
@@ -84,7 +88,7 @@ const TableContactComponent = () => {
                     </td>
                     <td className='text-center'>
                       <a href='/' className="badge rounded-pill bg-primary text-decoration-none">Detail</a>
-                      <a href='/' className="badge rounded-pill bg-success mx-2 text-decoration-none">Edit</a>
+                      <button onClick={ () => dispatch(detailContact(contact)) }  className="badge rounded-pill bg-success mx-2 text-decoration-none">Edit</button>
                       {/* value digunanakan untuk mengambil value dari button */}
                       <button onClick={ delContact } value={ contact.id } className="badge rounded-pill bg-danger text-decoration-none">Delete</button>
                     </td>
