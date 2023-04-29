@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { getListContacts } from '../../actions/contact.action';
+import { getListContacts, deleteContact } from '../../actions/contact.action';
 import { useDispatch, useSelector } from 'react-redux';
 
 const TableContactComponent = () => {
@@ -9,10 +9,21 @@ const TableContactComponent = () => {
     getListContactResult,
     getListContactLoading,
     getListContactError,
+    deleteContactResult
   } = useSelector((state) => state.contactReducer);
 
   // > useDispatch
   const dispatch = useDispatch();
+
+  // > Method untuk hapus kontak
+  const delContact = (event) => {
+    const confirmation = window.confirm('Are you sure?');
+    
+    if (confirmation === true) {
+      // > event.target.value didapat dari value di form
+      dispatch(deleteContact(event.target.value));
+    }
+  };
 
   let i = 0;
   useEffect(() => {
@@ -23,6 +34,16 @@ const TableContactComponent = () => {
       i++;
     }
   }, [dispatch, i]);
+
+  // > Akan dijalankan bila deleteContactResult != false pada distpatcher
+  useEffect(() => {
+    // > kita update tabelnya
+    if (deleteContactResult) {
+      console.info('5. Delete datanya!')
+      // => update disini
+      dispatch(getListContacts());
+    }
+  }, [deleteContactResult, dispatch]);
 
   return (
     <>
@@ -62,9 +83,10 @@ const TableContactComponent = () => {
                       { contact.phoneNumber }
                     </td>
                     <td className='text-center'>
-                      <a href='/' className="badge rounded-pill bg-primary">Detail</a>
-                      <a href='/' className="badge rounded-pill bg-success mx-2">Edit</a>
-                      <a href='/' className="badge rounded-pill bg-danger">Delete</a>
+                      <a href='/' className="badge rounded-pill bg-primary text-decoration-none">Detail</a>
+                      <a href='/' className="badge rounded-pill bg-success mx-2 text-decoration-none">Edit</a>
+                      {/* value digunanakan untuk mengambil value dari button */}
+                      <button onClick={ delContact } value={ contact.id } className="badge rounded-pill bg-danger text-decoration-none">Delete</button>
                     </td>
                   </tr>
                 )
