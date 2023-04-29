@@ -1,5 +1,9 @@
 // Menyimpan store, atau state yang berhubungan dengan data contact
-import { GET_LIST_CONTACT, ADD_NEW_CONTACT } from "../../actions/contact.action";
+import { 
+  GET_LIST_CONTACT, 
+  ADD_NEW_CONTACT, 
+  DELETE_CONTACT 
+} from "../../actions/contact.action";
 
 const initialState = {
   // > SHOW ALL CONTACT
@@ -10,6 +14,10 @@ const initialState = {
   addContactResult: false,
   addContactLoading: false,
   addContactError: false,
+  // > DELETE CONTACT
+  deleteContactResult: false,
+  deleteContactLoading: false,
+  deleteContactError: false,
 };
 
 const contactReducer = (state = initialState, action) => {
@@ -18,7 +26,7 @@ const contactReducer = (state = initialState, action) => {
     // => Jadi jika actionnya != case GET_LIST_CONTACT
     // => Maka case ini tidak akan dibaca
     case GET_LIST_CONTACT:
-      console.info(action.payload, '4. Masuk ke Reducer!');
+      console.info(action.payload, '4. Masuk ke Reducer Tampilkan Kontak!');
 
       return {
         ...state,
@@ -27,7 +35,7 @@ const contactReducer = (state = initialState, action) => {
         getListContactError: action.payload.errorMessage
       }
     case ADD_NEW_CONTACT:
-      console.info(action.payload, '4. Masuk ke Reducer!');
+      console.info(action.payload, '4. Masuk ke Reducer Tambah Kontak!');
 
       return {
         ...state,
@@ -35,6 +43,15 @@ const contactReducer = (state = initialState, action) => {
         addContactLoading: action.payload.loading,
         addContactError: action.payload.errorMessage
       }
+    case DELETE_CONTACT:
+      console.info(action.payload, '4. Masuk ke Reducer Hapus Kontak!');
+
+      return {
+        ...state,
+        deleteContactResult: action.payload.data,
+        deleteContactLoading: action.payload.loading,
+        deleteContactError: action.payload.errorMessage
+      };
     default:
       return state;
   };
